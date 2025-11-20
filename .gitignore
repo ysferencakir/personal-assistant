@@ -1,0 +1,60 @@
+# ==========================
+#  Personal Assistant - .gitignore
+# ==========================
+
+# --- ENV / Secrets ---
+.env
+*.env
+!*.env.example        # Sadece örnek env dosyaları repoda kalsın
+
+# --- Python bytecode / cache ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.so
+
+# Build / dist
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+venv/
+env/
+.venv/
+.python-version
+
+# --- IDE / Editor ---
+.vscode/
+.idea/
+*.code-workspace      # personal-assistant.code-workspace da buna giriyor
+
+# --- Logs ---
+logs/
+*.log
+
+# --- Databases ---
+*.sqlite3
+*.db
+*.db-journal
+data/app.db
+
+# --- Health raw data (kişisel veri) ---
+data/health/*
+# İstersen klasörün kendisi için boş bir .gitkeep bırakabilirsin
+
+# --- Stocks raw data (finansal veri, ileride) ---
+data/stocks/*
+
+# --- Exported reports (Excel/CSV, kişisel veri) ---
+data/exports/*
+!data/exports/.gitkeep
+
+# --- System files ---
+.DS_Store
+Thumbs.db
+
+# --- GitHub Actions caches (ileride kullanırsan) ---
+.github/cache/

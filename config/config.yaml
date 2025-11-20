@@ -1,0 +1,82 @@
+# ===========================================
+#  Personal Assistant
+# ===========================================
+
+app:
+  name: "Personal Assistant"
+  env: "dev"                  # dev / prod
+  timezone: "Asia/Nicosia"    # Change it with your timezone.
+  language: "en"              # Report language (for future use)
+
+# Discord Settings
+discord:
+  channel_id: "CHANNEL_ID"    # If you use a bot; not needed for pure webhook
+  use_embed: false
+  mention_user_id: null       # Optional: user ID to @mention
+
+  # Do NOT put secrets here.
+  # If you use a bot:
+  #   DISCORD_TOKEN -> from environment (e.g. GitHub Secrets)
+  # If you use a webhook:
+  #   DISCORD_WEBHOOK_URL -> from environment
+
+# Health Connect
+health:
+  enabled: true
+
+  # Which metrics will be processed?
+  metrics:
+    steps: true               # Step count
+    heart_rate: false         # Heart rate
+    sleep: true               # Sleep data
+    calories: false
+    weight: false
+    exercise: false
+
+  # Health Connect raw export (JSON/CSV)
+  ingest:
+    input_format: "json"      # json or csv
+    input_dir: "data/health"  # Folder for raw dumps
+    file_pattern: "*.json"    # Example: 2025-01-01.json
+
+  # Daily Report Settings
+  daily_report:
+    enabled: true
+    hour: 12                  # Every day at 12:00
+    minute: 0                 # You can change later (e.g. 30 for 12:30)
+
+  # Weekly Report Settings
+  weekly_report:
+    enabled: true
+    day_of_week: "sun"        # mon, tue, wed, thu, fri, sat, sun
+    hour: 20                  # Send at 20:00
+
+  # Export (Excel/CSV) Settings
+  export:
+    enabled: true
+    format: "xlsx"            # xlsx / csv
+    output_dir: "data/exports"
+    include_raw_data: true
+
+# Reports
+reports:
+  date_format: "YYYY-MM-DD"
+  time_format: "HH:mm"
+
+  titles:
+    health_weekly: "Weekly Health Report"
+    health_daily: "Daily Health Summary"
+
+# Logging
+logging:
+  level: "INFO"               # DEBUG / INFO / WARNING / ERROR
+  to_file: true
+  file_path: "logs/app.log"
+  max_bytes: 1048576          # 1 MB
+  backup_count: 3
+
+# File & Data Paths
+paths:
+  db_path: "data/app.db"
+  health_raw_dir: "data/health"
+  export_dir: "data/exports"
